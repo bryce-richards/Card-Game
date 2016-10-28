@@ -8,8 +8,11 @@
 }
 
 .card {
-    width: 80px;
-    height: 117px;
+    min-width: 70px;
+    max-width: 250px;
+    min-height: 102px;
+    max-height: 363px;
     border: 2px solid deeppink;
+    text-align: center;
     margin: 5px auto;
 }

@@ -3,6 +3,8 @@
  */
 var ranks = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6', '5', '4', '3', '2'];
 var suits = ['H', 'S', 'C', 'D'];
+var panelColors = ["success" , "warning", "danger", "info", "success" , "warning", "danger", "info", "success" , "warning", "danger", "info", "success" , "warning", "danger", "info"];
+
 function Card(rank, suit) {
     this.rank = rank;
     this.suit = suit;
@@ -38,11 +40,17 @@ function dealCards(deck, players, cards) {
     $("#players").empty();
     var colRatio = Math.floor(12 / players);
     for (var i = 1; i <= players; i++) {
-        var newPlayer = $("<div>");
-        newPlayer.html("<h2>Player " + i + "</h2>");
-        newPlayer.addClass("player col-lg-" + colRatio + " col-md-" + colRatio + " col-sm-" + colRatio);
-        newPlayer.attr("id", "player" + i);
-        $("#players").append(newPlayer);
+        var playerPanel = $("<div>");
+        var playerHeading = $("<div>");
+        var playerTitle = $("<h3>");
+        var playerBody = $("<div>");
+        playerPanel.addClass("player panel panel-" + panelColors[i-1] + " col-lg-" + colRatio + " col-md-" + colRatio + " col-sm-" + colRatio);
+        playerHeading.addClass("row panel-heading");
+        playerTitle.text("Player " + i);
+        playerBody.addClass("row panel-body").attr("id", "player" + i);
+        playerHeading.append(playerTitle);
+        playerPanel.append(playerHeading).append(playerBody);
+        $("#players").append(playerPanel);
     }
     for (var j = 0; j < cards; j++) {
         for (var k = 1; k <= players; k++) {
@@ -50,7 +58,14 @@ function dealCards(deck, players, cards) {
             var cardSymbol = (tempCard[0].rank + tempCard[0].suit);
             console.log(cardSymbol);
             console.log(tempCard);
-            $("#player" + k).append('<img class="card" id=' + cardSymbol + ' src="images/cards/' + cardSymbol + '.png"/>');
+            var cardImg = $("<img>");
+            cardImg.addClass("card");
+            cardImg.data("rank", tempCard[0].rank);
+            cardImg.data("suit", tempCard[0].suit);
+            cardImg.attr("src", "images/cards/" + cardSymbol + ".png");
+            cardImg.attr("width", "500" / players);
+            cardImg.attr("height", "726" / players);
+            $("#player" + k).append(cardImg);
             if (deck.length === 0) {
                 return;
             }
@@ -63,7 +78,6 @@ $('#submit').on('click', function(){
     var newDeck = createDeck(ranks, suits);
     var shuffledDeck = shuffleDeck(newDeck, 5);
     var currentDeck = shuffledDeck.slice(0);
-    // This line of code will grab the input from the textbox
     var players = $("#playerSelect").val().trim();
     var cards = $("#cardSelect").val().trim();
 
