@@ -1,0 +1,15 @@
+.player {
+    min-height: 50px;
+    background-color: lightseagreen;
+    color: white;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.card {
+    width: 80px;
+    height: 117px;
+    border: 2px solid deeppink;
+    margin: 5px auto;
+}
