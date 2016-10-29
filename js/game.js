@@ -56,13 +56,7 @@ function dealCards(deck, players, cards) {
         for (var k = 1; k <= players; k++) {
             var tempCard = deck.splice(0, 1);
             var cardSymbol = (tempCard[0].rank + tempCard[0].suit);
-            var cardImg = $("<img>");
-            cardImg.addClass("card");
-            cardImg.data("rank", tempCard[0].rank);
-            cardImg.data("suit", tempCard[0].suit);
-            cardImg.attr("src", "images/cards/" + cardSymbol + ".png");
-            cardImg.attr("width", "500" / players);
-            cardImg.attr("height", "726" / players);
+            var cardImg = $("<img>").addClass("card").data("rank", tempCard[0].rank).data("suit", tempCard[0].suit).attr("src", "images/cards/" + cardSymbol + ".png").attr("width", "500" / players).attr("height", "726" / players);
             $("#player" + k).append(cardImg);
             if (deck.length === 0) {
                 return;
