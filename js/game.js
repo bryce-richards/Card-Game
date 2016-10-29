@@ -56,8 +56,6 @@ function dealCards(deck, players, cards) {
         for (var k = 1; k <= players; k++) {
             var tempCard = deck.splice(0, 1);
             var cardSymbol = (tempCard[0].rank + tempCard[0].suit);
-            console.log(cardSymbol);
-            console.log(tempCard);
             var cardImg = $("<img>");
             cardImg.addClass("card");
             cardImg.data("rank", tempCard[0].rank);
