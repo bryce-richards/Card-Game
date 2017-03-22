@@ -4,8 +4,8 @@ Functions to use for starting any card game. Create a deck, shuffle a deck, and 
 
 ## Technology
 
-* [JavaScript] (https://www.javascript.com/)
-* [jQuery] (https://jquery.com/)
+* [JavaScript](https://www.javascript.com/)
+* [jQuery](https://jquery.com/)
 
 ## Author
 
